@@ -5,7 +5,7 @@
 </div>
 
 <p align="center">
-  <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg" />
+  <img alt="License: AGPL-3.0" src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg" />
   <img alt="Python: 3.9+" src="https://img.shields.io/badge/python-3.9+-brightgreen.svg" />
   <img alt="Platform: Windows | Mac | Linux" src="https://img.shields.io/badge/platform-Windows%20%7C%20Mac%20%7C%20Linux-lightgrey.svg" />
   <img alt="Build Status" src="https://img.shields.io/badge/build-passing-brightgreen.svg" />
@@ -77,6 +77,10 @@ The SEC EDGAR MCP server acts as a middleman between an AI (MCP client) and the 
 
 **How it works**: The MCP client discovers available tools (company lookup, financial statements, insider transactions, etc.). When invoked, each tool fetches data from SEC sources, applies deterministic processing rules, and returns structured JSON with filing references. This ensures AI responses are accurate, verifiable, and based solely on official SEC data.
 
+## Integrations
+
+In its current form, the MCP server is configured to use the [stdio](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#stdio) transport. Integrations with platforms such as [Dify](https://dify.ai) will require switching to [streamable HTTP](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http), or possibly [SSE](https://modelcontextprotocol.io/specification/2024-11-05/basic/transports#http-with-sse) depending on the required [backwards compatibility](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#backwards-compatibility)). This can be done by passing a different `--transport` argument to `server.py`. However, it may also require editing `server.py`, because other arguments such as `host` may need to be passed to the FastMCP constructor.
+
 ## References 📚
 
 - **[SEC EDGAR](https://www.sec.gov/edgar)** – About EDGAR, SEC.gov (2024). EDGAR is the SEC's database for electronic company filings.
@@ -88,9 +92,15 @@ The SEC EDGAR MCP server acts as a middleman between an AI (MCP client) and the 
 
 ## License ⚖️
 
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute it. See the LICENSE file for details.
+This open-source project is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0)](LICENSE). This means:
+- You can use, modify, and distribute this software
+- If you modify and distribute it, you must release your changes under AGPL-3.0
+- If you run a modified version on a server, you must provide the source code to users
+- See the LICENSE file for full details
+
+For commercial licensing options or other licensing inquiries, please contact stefano@amorelli.tech.
 
 ---
 
-© 2025 [Stefano Amorelli](https://amorelli.tech) – Released under the [MIT license](LICENSE).  Enjoy! 🎉
+© 2025 [Stefano Amorelli](https://amorelli.tech) – Released under the [GNU Affero General Public License v3.0](LICENSE).  Enjoy! 🎉
 
